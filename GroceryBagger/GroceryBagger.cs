@@ -10,16 +10,24 @@ namespace GroceryBagger
     {
         public int MinimumBags(int strength, String[] itemType)
         {
-
-            Console.WriteLine(strength);
-            Console.WriteLine(itemType.Length);
-            foreach (string item in itemType)
+            SortedDictionary<string, int> M = new SortedDictionary<string, int>();
+            foreach (var num in itemType)
+            {
+                if (!M.ContainsKey(num))
                 {
-                Console.WriteLine(item);
+                    M.Add(num, 0);
+                }
+                M[num]++;
             }
-            Console.ReadLine();
-            return 0;
-        }
+        
+            int ret = 0;
+            foreach (KeyValuePair<string, int> p in M)
+            {
+                ret += (p.Value + strength - 1) / strength;
+            }
 
+            return ret;
+
+        }
     }
 }

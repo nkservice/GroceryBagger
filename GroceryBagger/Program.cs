@@ -23,11 +23,14 @@ namespace GroceryBagger
                 Console.ReadLine();
 
             }
-           
-                string[] ListArray = GetList();
-                GroceryBagger bagger = new GroceryBagger();
-                bagger.MinimumBags(strength, ListArray);
-            
+
+            string[] ListArray = GetList();
+            GroceryBagger bagger = new GroceryBagger();
+            var test = bagger.MinimumBags(strength, ListArray);
+
+            Console.WriteLine("The number of bags needed is " + test);
+            Console.ReadLine();
+
         }
 
 
@@ -46,35 +49,33 @@ namespace GroceryBagger
 
                     break;
                 }
-                else if (list.Count >= 50)
+
+                if (input.Length <= 0 || input.Length > 50)
+                {
+                    Console.WriteLine("Item can only between 1 and 50 characters");
+
+                }
+
+                else if (input.Any(char.IsLower) || input.Any(char.IsDigit))
+                {
+
+                    Console.WriteLine("Items must be in Uppercase and cannot be numbers");
+
+
+                }
+                else
+                {
+                    list.Add(input);
+                }
+
+                if (list.Count >= 50)
                 {
                     Console.WriteLine("Cannot go over 50 items. Please type exit");
+                    break;
                 }
-               
-                    foreach (var item in list)
-                    {
-                        if (item.Length <= 0 || item.Length > 50)
-                        {
-                            Console.WriteLine("Item can only between 1 and 50 characters");
-                           
-                        }
-                        else if (item.Any(char.IsLower) || item.Any(char.IsDigit))
-                        {
-
-                            Console.WriteLine("items must be in Uppercase and cannot be numbers");
-                            Console.ReadLine();
-
-                        }
-
-
-                    
-                }
-                list.Add(input);
             }
 
             ListArray = list.ToArray();
-
-
             return ListArray;
         }
     }
