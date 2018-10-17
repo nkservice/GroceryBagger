@@ -21,7 +21,7 @@ namespace GroceryBagger
             {
                 Console.WriteLine("Number must be between 1 and 50");
                 Console.WriteLine("Enter Bag Strength");
-                Console.ReadLine();
+                
             }
             else
             {
@@ -64,7 +64,8 @@ namespace GroceryBagger
                         {
 
                             Console.WriteLine("items must be in Uppercase and cannot be numbers");
-                           
+                            Console.ReadLine();
+
                         }
 
 
