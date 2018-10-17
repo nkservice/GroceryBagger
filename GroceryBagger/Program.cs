@@ -20,15 +20,14 @@ namespace GroceryBagger
             if (strength <= 0 || strength > 50)
             {
                 Console.WriteLine("Number must be between 1 and 50");
-                Console.WriteLine("Enter Bag Strength");
-                
+                Console.ReadLine();
+
             }
-            else
-            {
+           
                 string[] ListArray = GetList();
                 GroceryBagger bagger = new GroceryBagger();
                 bagger.MinimumBags(strength, ListArray);
-            }
+            
         }
 
 
@@ -51,8 +50,7 @@ namespace GroceryBagger
                 {
                     Console.WriteLine("Cannot go over 50 items. Please type exit");
                 }
-                else
-                {
+               
                     foreach (var item in list)
                     {
                         if (item.Length <= 0 || item.Length > 50)
@@ -69,7 +67,7 @@ namespace GroceryBagger
                         }
 
 
-                    }
+                    
                 }
                 list.Add(input);
             }
